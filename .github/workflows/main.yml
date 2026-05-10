@@ -15,9 +15,8 @@ jobs:
 
       - name: Show files
         run: |
-         ls -la
-         uname -r
+          ls -la
+          uname -r
 
       - name: Run script
         run: echo "Hello GitHub Actions: ${{ secrets.COMPANY }}"
-        
