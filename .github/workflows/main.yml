@@ -14,7 +14,9 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Show files
-        run: ls -la
+        run: |
+         ls -la
+         uname -r
 
       - name: Run script
         run: echo "Hello GitHub Actions"
