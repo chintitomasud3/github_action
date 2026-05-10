@@ -19,4 +19,5 @@ jobs:
           uname -r
 
       - name: Run script
-        run: echo "Hello GitHub Actions: ${{ secrets.COMPANY }}"
+        run: |
+          echo "Hello GitHub Actions: ${{ secrets.COMPANY }}"
