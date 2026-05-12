@@ -12,6 +12,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Beforessh
+        run: |
+          ip addr
+  
 
       - name: Connect via SSH
         uses: appleboy/ssh-action@v1.2.0
