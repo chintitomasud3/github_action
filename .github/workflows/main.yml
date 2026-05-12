@@ -1,4 +1,4 @@
-name: Chintito Action
+name: SSH Connect
 
 on:
   push:
@@ -6,18 +6,23 @@ on:
       - main
 
 jobs:
-  build:
-    runs-on: self-hosted
+  ssh-test:
+    runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Show files
-        run: |
-          ls -la
-          uname -r
+      - name: Connect via SSH
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 22
 
-      - name: Run script
-        run: |
-          echo "Hello GitHub Actions: ${{ secrets.COMPANY }}"
+          script: |
+            uname -a
+            whoami
+            pwd
+            
